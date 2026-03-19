@@ -122,7 +122,7 @@ public class GenerateTextFromTextInput {
 
 ### When MCP is Installed (Preferred)
 
-If the **`search_documentation`** tool is available, use it as your **only** documentation source:
+If the **`search_documentation`** tool (from the Google MCP server) is available, use it as your **only** documentation source:
 
 1. Call `search_documentation` with your query
 2. Read the returned documentation
@@ -152,23 +152,12 @@ Key pages:
 
 ---
 
-## API Spec (Source of Truth)
-
-For exact field names, types, and supported operations, fetch the REST API discovery spec:
-
-- **v1beta** (default): `https://generativelanguage.googleapis.com/$discovery/rest?version=v1beta`
-- **v1**: `https://generativelanguage.googleapis.com/$discovery/rest?version=v1`
-
-When in doubt, use v1beta. The official SDKs target v1beta.
-
----
-
 ## Behavior Guidelines
 
-1. **Generate code immediately** once you have the SDK syntax. Do not over-research.
-2. **Maximum 2 tool calls** for documentation lookup before generating output.
-3. **Trust the skill rules** for SDK/model names — they are always correct.
-4. **Trust MCP results** for API details — they are always up-to-date.
+1. **Create code immediately** once you have necessary syntax. Do not over-research.
+2. **Strict stopping rule for MCP**: If you use an MCP tool (e.g., `search_documentation`) and receive content, you **must not** proceed to fallback lookups (e.g., searching `llms.txt`).
+3. **Trust MCP for current API specs**: MCP is the absolute source of truth for current model names, methods, and capabilities.
+4. **Trust Skill for safeguards**: Follow the Critical Rules strictly to avoid deprecated SDK packages or out-of-bounds configurations.
 
 ---
 

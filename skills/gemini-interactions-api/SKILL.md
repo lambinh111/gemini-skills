@@ -269,7 +269,7 @@ An `Interaction` response contains `outputs` — an array of typed content block
 
 ### When MCP is Installed (Preferred)
 
-If the **`search_documentation`** tool is available, use it as your **only** documentation source:
+If the **`search_documentation`** tool (from the Google MCP server) is available, use it as your **only** documentation source:
 
 1. Call `search_documentation` with your query
 2. Read the returned documentation
@@ -284,8 +284,6 @@ If no MCP documentation tools are available, fetch from the official docs:
 
 - [Interactions Full Documentation](https://ai.google.dev/gemini-api/docs/interactions.md.txt)
 - [Deep Research Full Documentation](https://ai.google.dev/gemini-api/docs/deep-research.md.txt)
-- [API Reference](https://ai.google.dev/static/api/interactions.md.txt)
-- [OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
 
 These pages cover function calling, built-in tools (Google Search, code execution, URL context, file search, computer use), remote MCP, structured output, thinking configuration, working with files, multimodal understanding and generation, streaming events, and more.
 
@@ -293,7 +291,7 @@ These pages cover function calling, built-in tools (Google Search, code executio
 
 ## Behavior Guidelines
 
-1. **Generate code immediately** once you have the SDK syntax. Do not over-research.
-2. **Maximum 2 tool calls** for documentation lookup before generating output.
-3. **Trust the skill rules** for SDK/model names — they are always correct.
-4. **Trust MCP results** for API details — they are always up-to-date.
+1. **Create code immediately** once you have necessary syntax. Do not over-research.
+2. **Strict stopping rule for MCP**: If you use an MCP tool (e.g., `search_documentation`) and receive content, you **must not** proceed to fallback lookups (e.g., searching `llms.txt`).
+3. **Trust MCP for current API specs**: MCP is the absolute source of truth for current model names, methods, and capabilities.
+4. **Trust Skill for safeguards**: Follow the Critical Rules strictly to avoid deprecated SDK packages or out-of-bounds configurations.
