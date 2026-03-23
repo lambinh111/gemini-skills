@@ -20,10 +20,6 @@ description: Use this skill when building applications with Gemini models, Gemin
 - `gemini-2.5-pro`: 1M tokens, complex reasoning, coding, research
 - `gemini-2.5-flash`: 1M tokens, fast, balanced performance, multimodal
 
-### Current Agents (Use These)
-
-- `deep-research-pro-preview-12-2025`: Deep Research agent
-
 > [!WARNING]
 > Models like `gemini-2.0-*`, `gemini-1.5-*` are **legacy and deprecated**. Never use them.
 
